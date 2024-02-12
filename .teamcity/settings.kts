@@ -37,6 +37,10 @@ project {
 object ExampleWorkflow : BuildType({
     name = "example-workflow"
 
+    params {
+        param("env.droplet_ip", "")
+    }
+
     vcs {
         root(HttpsGithubComWojdakWorkflowExampleRefsHeadsMain)
     }

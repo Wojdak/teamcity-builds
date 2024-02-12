@@ -1,6 +1,4 @@
 import jetbrains.buildServer.configs.kotlin.*
-import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 
 /*
@@ -30,31 +28,7 @@ version = "2023.11"
 project {
 
     vcsRoot(HttpsGithubComWojdakWorkflowExampleRefsHeadsMain)
-
-    buildType(ExampleWorkflow)
 }
-
-object ExampleWorkflow : BuildType({
-    name = "example-workflow"
-
-    params {
-        param("env.droplet_ip", "")
-    }
-
-    vcs {
-        root(HttpsGithubComWojdakWorkflowExampleRefsHeadsMain)
-    }
-
-    triggers {
-        vcs {
-        }
-    }
-
-    features {
-        perfmon {
-        }
-    }
-})
 
 object HttpsGithubComWojdakWorkflowExampleRefsHeadsMain : GitVcsRoot({
     name = "https://github.com/Wojdak/workflow-example#refs/heads/main"

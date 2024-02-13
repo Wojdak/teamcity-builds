@@ -62,6 +62,7 @@ object Build : BuildType({
         script {
             name = "Install Dependencies"
             id = "Install_Dependencies"
+            enabled = false
             scriptContent = """
                 apt-get update
                 apt-get install -y python3-pip

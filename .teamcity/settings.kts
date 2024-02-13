@@ -52,7 +52,7 @@ project {
 }
 
 object Build : BuildType({
-    name = "Build"
+    name = "Build Flask App"
 
     vcs {
         root(HttpsGithubComWojdakSampleAppGitRefsHeadsMain)

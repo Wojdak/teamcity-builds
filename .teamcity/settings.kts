@@ -56,6 +56,14 @@ object BuildFlaskApp : BuildType({
                 namesAndTags = "my-app:latest"
             }
         }
+        dockerCommand {
+            name = "Run Container"
+            id = "Run_Container"
+            commandType = other {
+                subCommand = "run"
+                commandArgs = "-d -p 5000:5000 myapp:latest"
+            }
+        }
         python {
             name = "Test Connection"
             id = "python_runner"
@@ -66,14 +74,6 @@ object BuildFlaskApp : BuildType({
             id = "python_runner_1"
             command = file {
                 filename = "app.py"
-            }
-        }
-        dockerCommand {
-            name = "Run Container"
-            id = "Run_Container"
-            commandType = other {
-                subCommand = "run"
-                commandArgs = "-d -p 5000:5000 myapp:latest"
             }
         }
     }

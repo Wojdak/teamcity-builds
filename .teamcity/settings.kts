@@ -59,12 +59,13 @@ object Build : BuildType({
     }
 
     steps {
-        python {
+        script {
             name = "Runn Flask App"
             id = "Runn_Flask_App"
-            command = file {
-                filename = "app.py"
-            }
+            scriptContent = """
+                pip install Flask
+                flask run
+            """.trimIndent()
         }
         python {
             name = "Run tests"

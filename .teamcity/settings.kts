@@ -82,6 +82,12 @@ object Build : BuildType({
                 namesAndTags = "wojdak/my-app:latest"
             }
         }
+        python {
+            name = "Lint Code"
+            id = "Lint_Code"
+            command = pylint {
+            }
+        }
     }
 
     triggers {

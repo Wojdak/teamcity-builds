@@ -91,6 +91,14 @@ object Build : BuildType({
                 namesAndTags = "my-app:latest"
             }
         }
+        script {
+            name = "Install Dependencies"
+            id = "Install_Dependencies"
+            scriptContent = """
+                apt-get install python3-pip
+                pip install Flask
+            """.trimIndent()
+        }
     }
 
     triggers {

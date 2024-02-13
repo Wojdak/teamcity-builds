@@ -79,7 +79,7 @@ object Build : BuildType({
             name = "Push image to Docker Hub"
             id = "Push_image_to_Docker_Hub"
             commandType = push {
-                namesAndTags = "my-app:latest"
+                namesAndTags = "wojdak/my-app:latest"
             }
         }
     }

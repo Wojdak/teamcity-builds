@@ -66,17 +66,6 @@ object Build : BuildType({
             }
         }
         python {
-            id = "python_runner_1"
-            environment = pipenv {
-            }
-            command = script {
-                content = """
-                    pip install Flask
-                    flask run
-                """.trimIndent()
-            }
-        }
-        python {
             name = "Lint Code"
             id = "Lint_Code"
             command = pylint {

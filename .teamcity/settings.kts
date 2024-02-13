@@ -63,8 +63,8 @@ object Build : BuildType({
             name = "Install Dependencies"
             id = "Install_Dependencies"
             scriptContent = """
-                apt-get install python3-pip
-                pip install Flask
+                sudo apt-get install python3-pip
+                sudo pip install Flask
             """.trimIndent()
         }
         script {

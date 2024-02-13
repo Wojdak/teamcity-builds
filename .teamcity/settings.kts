@@ -1,4 +1,5 @@
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 /*
 The settings script is an entry point for defining a TeamCity
@@ -25,4 +26,14 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2023.11"
 
 project {
+  buildType(HelloWorld)
 }
+
+object HelloWorld: BuildType({
+    name = "Hello world"
+    steps {
+        script {
+            scriptContent = "echo 'Hello world!'"
+        }
+    }
+})

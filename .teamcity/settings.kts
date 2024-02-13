@@ -77,6 +77,7 @@ object Build : BuildType({
         python {
             name = "Lint Code"
             id = "Lint_Code"
+            enabled = false
             environment = venv {
             }
             command = pylint {

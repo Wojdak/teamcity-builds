@@ -60,6 +60,14 @@ object Build : BuildType({
 
     steps {
         script {
+            name = "Install Dependencies"
+            id = "Install_Dependencies"
+            scriptContent = """
+                apt-get install python3-pip
+                pip install Flask
+            """.trimIndent()
+        }
+        script {
             name = "Runn Flask App"
             id = "Runn_Flask_App"
             scriptContent = """
@@ -90,14 +98,6 @@ object Build : BuildType({
             commandType = push {
                 namesAndTags = "my-app:latest"
             }
-        }
-        script {
-            name = "Install Dependencies"
-            id = "Install_Dependencies"
-            scriptContent = """
-                apt-get install python3-pip
-                pip install Flask
-            """.trimIndent()
         }
     }
 

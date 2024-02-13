@@ -58,6 +58,7 @@ object Build : BuildType({
             }
         }
         python {
+            name = "Run tests"
             id = "python_runner"
             command = pytest {
             }

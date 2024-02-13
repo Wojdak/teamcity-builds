@@ -1,7 +1,6 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.dockerSupport
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.buildSteps.python
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
@@ -60,17 +59,6 @@ object Build : BuildType({
     }
 
     steps {
-        script {
-            name = "Run Flask App"
-            id = "Runn_Flask_App"
-            scriptContent = """
-                sudo apt-get update
-                sudo apt-get install python3-pip
-                flask run
-            """.trimIndent()
-            dockerImage = "python:latest"
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
         python {
             name = "Run tests"
             id = "python_runner"

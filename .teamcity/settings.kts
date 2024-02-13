@@ -59,9 +59,12 @@ object Build : BuildType({
 
     steps {
         python {
-            name = "Run tests"
-            id = "python_runner"
-            command = pytest {
+            name = "Lint Code"
+            id = "Lint_Code"
+            enabled = false
+            environment = venv {
+            }
+            command = pylint {
             }
         }
         python {
@@ -74,12 +77,9 @@ object Build : BuildType({
             }
         }
         python {
-            name = "Lint Code"
-            id = "Lint_Code"
-            enabled = false
-            environment = venv {
-            }
-            command = pylint {
+            name = "Run tests"
+            id = "python_runner"
+            command = pytest {
             }
         }
         dockerCommand {

@@ -1,5 +1,7 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
+import jetbrains.buildServer.configs.kotlin.buildSteps.python
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
@@ -41,6 +43,28 @@ object BuildFlaskApp : BuildType({
 
     vcs {
         root(HttpsGithubComWojdakSampleAppRefsHeadsMain)
+    }
+
+    steps {
+        dockerCommand {
+            id = "DockerCommand"
+            commandType = build {
+                source = file {
+                    path = "Dockerfile"
+                }
+            }
+        }
+        python {
+            id = "python_runner"
+            command = pytest {
+            }
+        }
+        python {
+            id = "python_runner_1"
+            command = file {
+                filename = "app.py"
+            }
+        }
     }
 
     triggers {

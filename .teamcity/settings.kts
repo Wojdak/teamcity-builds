@@ -57,6 +57,7 @@ object BuildFlaskApp : BuildType({
             }
         }
         python {
+            name = "Test Connection"
             id = "python_runner"
             command = pytest {
             }

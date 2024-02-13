@@ -79,6 +79,8 @@ object Build : BuildType({
         python {
             name = "Run tests"
             id = "python_runner"
+            environment = venv {
+            }
             command = pytest {
             }
         }

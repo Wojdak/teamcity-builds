@@ -68,6 +68,14 @@ object BuildFlaskApp : BuildType({
                 filename = "app.py"
             }
         }
+        dockerCommand {
+            name = "Run Container"
+            id = "Run_Container"
+            commandType = other {
+                subCommand = "run"
+                commandArgs = "-d -p 5000:5000 myapp:latest"
+            }
+        }
     }
 
     triggers {

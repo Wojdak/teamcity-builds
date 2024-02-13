@@ -60,6 +60,13 @@ object Build : BuildType({
 
     steps {
         python {
+            name = "Runn Flask App"
+            id = "Runn_Flask_App"
+            command = file {
+                filename = "app.py"
+            }
+        }
+        python {
             name = "Run tests"
             id = "python_runner"
             command = pytest {
@@ -80,13 +87,6 @@ object Build : BuildType({
             id = "Push_image_to_Docker_Hub"
             commandType = push {
                 namesAndTags = "my-app:latest"
-            }
-        }
-        python {
-            name = "Runn Flask App"
-            id = "Runn_Flask_App"
-            command = file {
-                filename = "app.py"
             }
         }
     }

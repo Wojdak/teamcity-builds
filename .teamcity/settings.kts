@@ -48,11 +48,13 @@ object Build : BuildType({
 
     steps {
         dockerCommand {
+            name = "Build docker image"
             id = "DockerCommand"
             commandType = build {
                 source = file {
                     path = "Dockerfile"
                 }
+                namesAndTags = "my-app:latest"
             }
         }
         python {

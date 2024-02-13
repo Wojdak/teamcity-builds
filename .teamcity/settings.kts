@@ -72,7 +72,7 @@ object Build : BuildType({
                 source = file {
                     path = "Dockerfile"
                 }
-                namesAndTags = "my-app:latest"
+                namesAndTags = "wojdak/my-app:latest"
             }
         }
         dockerCommand {

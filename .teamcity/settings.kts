@@ -59,6 +59,12 @@ object Build : BuildType({
     }
 
     steps {
+        python {
+            name = "Run tests"
+            id = "python_runner"
+            command = pytest {
+            }
+        }
         dockerCommand {
             name = "Build docker image"
             id = "DockerCommand"
@@ -67,12 +73,6 @@ object Build : BuildType({
                     path = "Dockerfile"
                 }
                 namesAndTags = "my-app:latest"
-            }
-        }
-        python {
-            name = "Run tests"
-            id = "python_runner"
-            command = pytest {
             }
         }
         dockerCommand {

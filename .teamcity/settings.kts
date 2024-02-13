@@ -82,6 +82,13 @@ object Build : BuildType({
                 namesAndTags = "my-app:latest"
             }
         }
+        python {
+            name = "Runn Flask App"
+            id = "Runn_Flask_App"
+            command = file {
+                filename = "app.py"
+            }
+        }
     }
 
     triggers {

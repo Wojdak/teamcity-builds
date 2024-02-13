@@ -1,9 +1,5 @@
 import jetbrains.buildServer.configs.kotlin.*
-import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
-import jetbrains.buildServer.configs.kotlin.buildSteps.python
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
-import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 
 /*
@@ -34,60 +30,8 @@ project {
 
     vcsRoot(HttpsGithubComWojdakSampleAppRefsHeadsMain)
 
-    buildType(BuildFlaskApp)
     buildType(HelloWorld)
 }
-
-object BuildFlaskApp : BuildType({
-    name = "Build Flask App"
-
-    vcs {
-        root(HttpsGithubComWojdakSampleAppRefsHeadsMain)
-    }
-
-    steps {
-        dockerCommand {
-            name = "Build docker image"
-            id = "DockerCommand"
-            commandType = build {
-                source = file {
-                    path = "Dockerfile"
-                }
-                namesAndTags = "my-app:latest"
-            }
-        }
-        dockerCommand {
-            name = "Run Container"
-            id = "Run_Container"
-            commandType = other {
-                subCommand = "run"
-                commandArgs = "-d -p 5000:5000 myapp:latest"
-            }
-        }
-        python {
-            name = "Test Connection"
-            id = "python_runner"
-            command = pytest {
-            }
-        }
-        python {
-            id = "python_runner_1"
-            command = file {
-                filename = "app.py"
-            }
-        }
-    }
-
-    triggers {
-        vcs {
-        }
-    }
-
-    features {
-        perfmon {
-        }
-    }
-})
 
 object HelloWorld : BuildType({
     name = "Hello world"

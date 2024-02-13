@@ -65,6 +65,12 @@ object Build : BuildType({
             command = pytest {
             }
         }
+        python {
+            name = "Lint Code"
+            id = "Lint_Code"
+            command = pylint {
+            }
+        }
         dockerCommand {
             name = "Build docker image"
             id = "DockerCommand"
@@ -80,12 +86,6 @@ object Build : BuildType({
             id = "Push_image_to_Docker_Hub"
             commandType = push {
                 namesAndTags = "wojdak/my-app:latest"
-            }
-        }
-        python {
-            name = "Lint Code"
-            id = "Lint_Code"
-            command = pylint {
             }
         }
     }

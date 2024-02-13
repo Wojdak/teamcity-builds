@@ -1,5 +1,7 @@
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 
 /*
@@ -29,9 +31,29 @@ version = "2023.11"
 project {
 
     vcsRoot(HttpsGithubComWojdakSampleAppRefsHeadsMain)
+    vcsRoot(HttpsGithubComWojdakSampleAppGitRefsHeadsMain)
 
+    buildType(Build)
     buildType(HelloWorld)
 }
+
+object Build : BuildType({
+    name = "Build"
+
+    vcs {
+        root(HttpsGithubComWojdakSampleAppGitRefsHeadsMain)
+    }
+
+    triggers {
+        vcs {
+        }
+    }
+
+    features {
+        perfmon {
+        }
+    }
+})
 
 object HelloWorld : BuildType({
     name = "Hello world"
@@ -40,6 +62,17 @@ object HelloWorld : BuildType({
         script {
             scriptContent = "echo 'Hello world!'"
         }
+    }
+})
+
+object HttpsGithubComWojdakSampleAppGitRefsHeadsMain : GitVcsRoot({
+    name = "https://github.com/Wojdak/sample-app.git#refs/heads/main"
+    url = "https://github.com/Wojdak/sample-app.git"
+    branch = "refs/heads/main"
+    branchSpec = "refs/heads/*"
+    authMethod = password {
+        userName = "Wojdak"
+        password = "credentialsJSON:fa36a0d7-2e4f-4ffd-a808-e1abeaa7dc90"
     }
 })
 

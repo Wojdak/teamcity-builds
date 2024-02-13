@@ -61,16 +61,6 @@ object Build : BuildType({
 
     steps {
         script {
-            name = "Install Dependencies"
-            id = "Install_Dependencies"
-            enabled = false
-            scriptContent = """
-                apt-get update
-                apt-get install -y python3-pip
-                pip install Flask
-            """.trimIndent()
-        }
-        script {
             name = "Run Flask App"
             id = "Runn_Flask_App"
             scriptContent = """

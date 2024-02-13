@@ -71,7 +71,7 @@ object Build : BuildType({
             """.trimIndent()
         }
         script {
-            name = "Runn Flask App"
+            name = "Run Flask App"
             id = "Runn_Flask_App"
             scriptContent = """
                 sudo apt-get update

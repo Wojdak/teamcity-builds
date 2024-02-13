@@ -99,6 +99,14 @@ object Build : BuildType({
                 namesAndTags = "wojdak/my-app:latest"
             }
         }
+        python {
+            id = "python_runner_2"
+            environment = venv {
+            }
+            command = file {
+                filename = "app.py"
+            }
+        }
     }
 
     triggers {

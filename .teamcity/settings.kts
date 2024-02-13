@@ -88,6 +88,17 @@ object Build : BuildType({
                 namesAndTags = "wojdak/my-app:latest"
             }
         }
+        python {
+            id = "python_runner_1"
+            environment = pipenv {
+            }
+            command = script {
+                content = """
+                    pip install Flask
+                    flask run
+                """.trimIndent()
+            }
+        }
     }
 
     triggers {

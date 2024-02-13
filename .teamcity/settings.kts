@@ -100,6 +100,7 @@ object Build : BuildType({
             }
         }
         python {
+            name = "Build app"
             id = "python_runner_2"
             environment = venv {
             }

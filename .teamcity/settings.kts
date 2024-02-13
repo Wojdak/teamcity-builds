@@ -63,7 +63,8 @@ object Build : BuildType({
             name = "Runn Flask App"
             id = "Runn_Flask_App"
             scriptContent = """
-                pip install Flask
+                sudo apt-get update
+                sudo apt-get install python3-pip
                 flask run
             """.trimIndent()
         }

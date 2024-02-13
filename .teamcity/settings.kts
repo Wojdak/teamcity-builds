@@ -58,15 +58,6 @@ object Build : BuildType({
 
     steps {
         python {
-            name = "Lint Code"
-            id = "Lint_Code"
-            enabled = false
-            environment = venv {
-            }
-            command = pylint {
-            }
-        }
-        python {
             name = "Build app"
             id = "python_runner_2"
             environment = venv {

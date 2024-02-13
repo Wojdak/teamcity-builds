@@ -44,7 +44,6 @@ project {
         dockerRegistry {
             id = "PROJECT_EXT_3"
             name = "Docker Registry"
-            url = "https://hub.docker.com/u/wojdak"
             userName = "Wojdak"
             password = "credentialsJSON:2b482261-e979-4a3f-bc29-24aa23d840a8"
         }

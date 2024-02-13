@@ -34,7 +34,6 @@ version = "2023.11"
 
 project {
 
-    vcsRoot(HttpsGithubComWojdakSampleAppRefsHeadsMain)
     vcsRoot(HttpsGithubComWojdakSampleAppGitRefsHeadsMain)
 
     buildType(Build)
@@ -132,17 +131,6 @@ object HelloWorld : BuildType({
 object HttpsGithubComWojdakSampleAppGitRefsHeadsMain : GitVcsRoot({
     name = "https://github.com/Wojdak/sample-app.git#refs/heads/main"
     url = "https://github.com/Wojdak/sample-app.git"
-    branch = "refs/heads/main"
-    branchSpec = "refs/heads/*"
-    authMethod = password {
-        userName = "Wojdak"
-        password = "credentialsJSON:fa36a0d7-2e4f-4ffd-a808-e1abeaa7dc90"
-    }
-})
-
-object HttpsGithubComWojdakSampleAppRefsHeadsMain : GitVcsRoot({
-    name = "https://github.com/Wojdak/sample-app#refs/heads/main"
-    url = "https://github.com/Wojdak/sample-app"
     branch = "refs/heads/main"
     branchSpec = "refs/heads/*"
     authMethod = password {
